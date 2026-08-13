@@ -1,0 +1,39 @@
+class Student {
+    String name;
+    int rollNo;
+    double marks;
+
+    
+    Student(String name, int rollNo, double marks) {
+        this.name = name;
+        this.rollNo = rollNo;
+        this.marks = marks;
+    }
+
+  
+    char getGrade() {
+        if (marks >= 90) return 'A';
+        if (marks >= 80) return 'B';
+        if (marks >= 70) return 'C';
+        if (marks >= 60) return 'D';
+        return 'F';
+    }
+
+    void displayInfo() {
+        System.out.println("Roll No : " + rollNo);
+        System.out.println("Name    : " + name);
+        System.out.println("Marks   : " + marks);
+        System.out.println("Grade   : " + getGrade());
+        System.out.println("-------------------------");
+    }
+
+    public static void main(String[] args) {
+        
+        Student s1 = new Student("Anirudh", 101, 88.5);
+        Student s2 = new Student("Babu", 102, 64.0);
+
+    
+        s1.displayInfo();
+        s2.displayInfo();
+    }
+}
