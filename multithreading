@@ -1,1 +1,33 @@
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class FoodDeliverySystem {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(2);
+        
+        executor.execute(() -> {
+            for (int i = 1; i <= 3; i++) {
+                System.out.println("Order #" + i + " placed successfully.");
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        });
+
+        executor.execute(() -> {
+            for (int i = 1; i <= 3; i++) {
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Order #" + i + " out for delivery.");
+            }
+        });
+
+        executor.shutdown();
+    }
+}
 
